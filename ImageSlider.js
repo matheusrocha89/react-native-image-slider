@@ -144,9 +144,10 @@ export default class ImageSlider extends Component {
                 ref={ref => this._onRef(ref)}
                 decelerationRate={0.99}
                 horizontal={true}
+		{...this._panResponder.panHandlers} 
                 showsHorizontalScrollIndicator={false}
                 style={[styles.container, this.props.style, {height: height}]}>
-                <View {...this._panResponder.panHandlers} style={styles.containerView}>
+                <View style={styles.containerView}>
                     {this.props.images.map((image, index) => {
                         const imageObject = typeof image === 'string' ? {uri: image} : image;
                         const imageComponent = <Image
