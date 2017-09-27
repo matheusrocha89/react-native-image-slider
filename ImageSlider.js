@@ -147,30 +147,28 @@ export default class ImageSlider extends Component {
                 {...this._panResponder.panHandlers}
                 showsHorizontalScrollIndicator={false}
                 style={[styles.container, this.props.style, {height: height}]}>
-                <View {...this._panResponder.panHandlers} style={styles.containerView}>
-                    {this.props.images.map((image, index) => {
-                        const imageObject = typeof image === 'string' ? {uri: image} : image;
-                        const imageComponent = <Image
-                            key={index}
-                            source={imageObject}
-                            style={{height, width}}
-                        />;
-                        if (this.props.onPress) {
-                            return (
-                                <TouchableOpacity
-                                    key={index}
-                                    style={{height, width}}
-                                    onPress={() => this.props.onPress({image, index})}
-                                    delayPressIn={200}
-                                >
-                                    {imageComponent}
-                                </TouchableOpacity>
-                            );
-                        } else {
-                            return imageComponent;
-                        }
-                    })}
-                </View>
+                  {this.props.images.map((image, index) => {
+                    const imageObject = typeof image === 'string' ? {uri: image} : image;
+                    const imageComponent = <Image
+                    key={index}
+                    source={imageObject}
+                    style={{height, width}}
+                      />;
+                    if (this.props.onPress) {
+                      return (
+                        <TouchableOpacity
+                        key={index}
+                        style={{height, width}}
+                        onPress={() => this.props.onPress({image, index})}
+                        delayPressIn={200}
+                        >
+                        {imageComponent}
+                        </TouchableOpacity>
+                      );
+                    } else {
+                      return imageComponent;
+                    }
+                  })}
             </ScrollView>
             <View style={styles.buttons}>
                 {this.props.images.map((image, index) => {
